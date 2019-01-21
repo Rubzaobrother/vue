@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let arr = [1,2,3,4,5,6,7,8,9]
+
+        show(...arr)
+
+        function show(a,b,c,...arr){
+            alert(a);
+            alert(b);
+            alert(c);
+            alert(arr)
+        }
+
+        let arr1 = [1,2,3]
+        let arr2 = [4,5,6]
+        let arr3 = [7,8,9]
+        let arr4 = [...arr3]
+        let arr5 = [...arr1,...arr2,...arr3]
+        console.log(arr4)
+        console.log(arr5)
+
+    </script>
+</body>
+</html>

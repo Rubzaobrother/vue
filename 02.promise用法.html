@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./jquery.min.js"></script>
+</head>
+
+<body>
+    <script>
+        var arr = new Array();
+        var obj = new Object();
+
+        let p = new promise((resolve, reject) => {
+            $.ajax({
+                url:'data/arr.txt',
+                dataType:'json',
+                success(arr){
+                    resolve(arr);
+                },
+                error(err){
+                    reject(err);
+                }
+            })
+        });
+
+        p.then((arr) =>{
+            alert('成功'+arr);
+        })
+        p.then((err) => {
+            console.log(err);
+            alert('失败'+err);
+        })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        // 请求接口数据与 拿到数据之后的逻辑处理分开
+        //  promise : 承诺的意思
+        let p = new Promise((resolve, reject) => {
+            if (true) {
+                resolve(arr)        //请求成功
+            } else {
+                reject(err)         //请求失败
+            }
+        }).then(
+            //第一次是成功之后的data逻辑处理
+            (arr) => {
+                alert('请求成功');
+                arr.forEach(item => {
+                    console.log(item)       //成功之后的逻辑处理
+                });
+            },
+
+            //第二次
+            (err) => {
+                alert('请求错误')
+            }
+        )    
+    </script>
+</body>
+
+</html>

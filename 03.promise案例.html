@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        var flag = 1
+        function step1(resolve, reject){
+            console.log('买食材');
+            if(flag) {
+                resolve('女朋友不挑食哈哈')
+            } else{
+                reject('女朋友不吃饭要减肥,正在沟通')
+            }  
+        }
+        function step2(resolve, reject){
+            console.log('准备洗菜');
+            if(flag==1) {
+                resolve('洗完')
+            }else{
+                reject('家里没水,洗不了')
+                flag=0;
+            }
+        }
+        function step3(resolve, reject){
+            console.log('准备做饭');
+            if(flag==1){
+                resolve('做饭完成')
+            }else{
+                reject('没有电做不了')
+            }
+        }
+        function step4(resolve, reject){
+            console.log('准备吃饭');
+            if(flag == 1){
+                resolve('吃饱了')
+            }else{
+                reject('饭糊了')
+            }
+        }
+
+        new Promise(step1).then((val1) =>{
+            console.log(val1);
+            return new Promise(step2);
+        }).then((val2) =>{
+            console.log(val2)
+            return new Promise(step3)
+        }).then((val3) =>{
+            console.log(val3)
+            return new Promise(step4)
+        }).then((val4) =>{
+            console.log(val4)
+        })
+    </script>
+</body>
+</html>
